@@ -1,5 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Ramon Tayag <ramon.tayag@gmail.com>
+MAINTAINER MakeMoneyOZ <makemoneyoz@ellaism.com>
 
 RUN apt-get update -qq && apt-get upgrade -y && \
   apt-get install wget golang-go git postgresql-client -y

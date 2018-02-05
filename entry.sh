@@ -31,6 +31,8 @@ init_bifrost_db () {
 }
 
 function start_bifrost() {
+  echo "Little sleep before starting server.. "
+  sleep 20
   echo "Starting bifrost..."
   bifrost server -c /opt/bifrost/config/bifrost.cfg
 }

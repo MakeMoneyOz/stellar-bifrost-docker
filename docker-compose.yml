@@ -5,7 +5,7 @@ services:
     command: /entry.sh
     depends_on:
       - db
-      - ethereum
+      - ellaism
     volumes:
       - ./config:/opt/bifrost/config
     environment:
@@ -14,7 +14,7 @@ services:
       POSTGRES_PASSWORD: password
       BIFROST_DB_NAME: bifrost
       BIFROST_DB_DSN: "postgres://pg:password@db/bifrost?sslmode=disable"
-  ethereum:
+  ellaism:
     image: ellaism/geth-docker
     command:
       - --rpc
@@ -28,7 +28,7 @@ services:
       - "8545:8545"
       - "30303:30303"
     volumes:
-      - ethereum:/root
+      - ellaism:/root
   db:
     image: postgres:9.6
     ports:
@@ -41,4 +41,4 @@ services:
       POSTGRES_DB: bifrost
 volumes:
   postgres:
-  ethereum:
+  ellaism:
