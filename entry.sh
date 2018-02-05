@@ -18,16 +18,29 @@ main () {
 }
 
 init_bifrost_db () {
-  if [ -f /opt/bifrost/data/.bifrostdb-initialized ]
+
+  if [ -f ~/.bifrostdb-initialized ]
+  then
+    echo "FILE IS FOUND HERE"
+  fi
+  
+  if [ -f /go/src/github.com/stellar/go/services/bifrost/database/migrations/.bifrostdb-initialized ]
   then
     echo "Bifrost DB: already initialized"
     return 0
+  fi
+  
+  if [ -f ~/.bifrostdb-initialized ]
+  then
+    echo "FILE IS FOUND HERE"
   fi
 
   echo "Bifrost DB: Initializing"
   DB_URL=$BIFROST_DB_DSN DB_DUMP_FILE=/go/src/github.com/stellar/go/services/bifrost/database/migrations/01_init.sql /go/bin/initbifrost
 
-  touch /opt/bifrost/data/.bifrostdb-initialized
+  touch /go/src/github.com/stellar/go/services/bifrost/database/migrations/.bifrostdb-initialized
+  # this one is a test
+  touch ~/.bifrostdb-initialized
 }
 
 function start_bifrost() {
