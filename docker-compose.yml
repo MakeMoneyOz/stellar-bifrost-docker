@@ -15,14 +15,13 @@ services:
       BIFROST_DB_NAME: bifrost
       BIFROST_DB_DSN: "postgres://pg:password@db/bifrost?sslmode=disable"
   ethereum:
-    image: ethereum/client-go:latest
+    image: ellaism/geth-docker
     command:
       - --rpc
       - --rpcaddr
       - "0.0.0.0"
       - --rpcport
       - "8545"
-      - --testnet
       - --fast
       - --cache=512
     ports:

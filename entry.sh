@@ -13,7 +13,7 @@ main () {
   done
 
   echo "Initializing Bifrost DB..."
-  init_bifrost_db
+#  init_bifrost_db
   start_bifrost
 }
 
